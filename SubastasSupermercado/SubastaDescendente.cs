@@ -11,9 +11,8 @@ namespace SubastasSupermercado
     {
         public void ProcesarOferta(Subasta subasta, Usuario usuario, double monto)
         {
-            // El primero que acepte gana
-            subasta.Ganador = usuario;
             subasta.OfertaActual = monto;
+            subasta.Ganador = usuario;
             subasta.Activa = false;
 
             MessageBox.Show("Subasta cerrada, ganador: " + usuario.Nombre);

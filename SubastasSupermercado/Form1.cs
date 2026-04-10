@@ -22,10 +22,10 @@ namespace SubastasSupermercado
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Crear usuario
+            
             comprador = new Comprador() { Nombre = "Santiago" };
 
-            // Crear producto (puedes cambiar luego)
+            
             ProductoFactory fabrica = new FabricaElectronico();
             Producto producto = fabrica.CrearProducto();
             {
@@ -34,8 +34,8 @@ namespace SubastasSupermercado
             }
             ;
 
-            // Crear subasta (ascendente por ahora)
-            subasta = new Subasta(new SubastaDescendente())
+            
+            subasta = new Subasta(new SubastaCerrada())
             {
                 Producto = producto,
                 OfertaActual = producto.PrecioInicial
@@ -66,11 +66,18 @@ namespace SubastasSupermercado
                 comprador.RealizarOferta(subasta, monto);
 
                 lblPrecio.Text = subasta.OfertaActual.ToString();
+
             }
             catch
             {
                 MessageBox.Show("Ingrese un número válido");
             }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            subasta.Cerrar();
+            lblPrecio.Text = subasta.OfertaActual.ToString();
         }
     }
 }

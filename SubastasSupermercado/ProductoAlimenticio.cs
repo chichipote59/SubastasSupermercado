@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace SubastasSupermercado
 {
-    internal class ProductoAlimenticio
+    public class ProductoAlimenticio : Producto
     {
+        public bool CercaCaducidad { get; set; }
+
+        public override double CalcularPrecioFinal()
+        {
+            if (CercaCaducidad)
+                return PrecioInicial * 0.85;
+
+            return PrecioInicial;
+        }
     }
 }

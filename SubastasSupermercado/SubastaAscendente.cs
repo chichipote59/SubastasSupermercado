@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SubastasSupermercado
 {
@@ -14,6 +15,10 @@ namespace SubastasSupermercado
             {
                 subasta.OfertaActual = monto;
                 subasta.Ganador = usuario;
+            }
+            else
+            {
+                MessageBox.Show("La oferta debe ser mayor a la actual");
             }
         }
     }

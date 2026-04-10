@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SubastasSupermercado
 {
-    public class ProductoRopa : Producto
+    public class FabricaAlimento : ProductoFactory
     {
-        public override double CalcularPrecioFinal()
+        public override Producto CrearProducto()
         {
-            return PrecioInicial * 0.80;
+            return new ProductoAlimenticio();
         }
     }
 }
