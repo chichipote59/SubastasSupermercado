@@ -14,6 +14,10 @@ namespace SubastasSupermercado
         public Usuario Ganador { get; set; }
         public bool Activa { get; set; } = true;
 
+        
+        public List<double> Ofertas = new List<double>();
+        public List<Usuario> Usuarios = new List<Usuario>();
+
         private SubastaStrategy estrategia;
 
         public Subasta(SubastaStrategy estrategia)
@@ -25,11 +29,37 @@ namespace SubastasSupermercado
         {
             if (!Activa)
             {
-                MessageBox.Show("Subasta cerrada");
+                MessageBox.Show("La subasta ya está cerrada");
                 return;
             }
 
             estrategia.ProcesarOferta(this, usuario, monto);
+        }
+
+        public void Cerrar()
+        {
+            Activa = false;
+
+            
+            if (Ofertas.Count > 0)
+            {
+                double mayor = Ofertas[0];
+                int posicion = 0;
+
+                for (int i = 1; i < Ofertas.Count; i++)
+                {
+                    if (Ofertas[i] > mayor)
+                    {
+                        mayor = Ofertas[i];
+                        posicion = i;
+                    }
+                }
+
+                Ganador = Usuarios[posicion];
+                OfertaActual = mayor;
+            }
+
+            MessageBox.Show("Ganador: " + Ganador?.Nombre + " con $" + OfertaActual);
         }
     }
 }

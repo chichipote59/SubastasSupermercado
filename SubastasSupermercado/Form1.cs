@@ -51,6 +51,18 @@ namespace SubastasSupermercado
             {
                 double monto = Convert.ToDouble(txtOferta.Text);
 
+                if (!subasta.Activa)
+                {
+                    MessageBox.Show("La subasta ya está cerrada");
+                    return;
+                }
+
+                if (monto <= 0)
+                {
+                    MessageBox.Show("Ingrese un valor válido");
+                    return;
+                }
+
                 comprador.RealizarOferta(subasta, monto);
 
                 lblPrecio.Text = subasta.OfertaActual.ToString();
