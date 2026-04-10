@@ -35,7 +35,7 @@ namespace SubastasSupermercado
             ;
 
             // Crear subasta (ascendente por ahora)
-            subasta = new Subasta(new SubastaAscendente())
+            subasta = new Subasta(new SubastaDescendente())
             {
                 Producto = producto,
                 OfertaActual = producto.PrecioInicial
